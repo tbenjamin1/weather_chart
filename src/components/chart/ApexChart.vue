@@ -100,10 +100,15 @@ export default {
           },
           min: 0,
         },
-        legend:{
-          show:true,  
-          position: 'top',
-        },
+        // title: {
+        //       text: 'Monthly Inflation in Argentina, 2002',
+        //       floating: true,
+        //       offsetY: 330,
+        //       align: 'center',
+        //       style: {
+        //         color: '#444'
+        //       }
+        //     }
         
   // legend: {
   //   show: false
