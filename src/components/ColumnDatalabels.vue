@@ -2,7 +2,7 @@
   <div>
     <div id="chart">
       <apexchart
-        type="area"
+        type="bar"
         height="350"
         :options="chartOptions"
         :series="series"
@@ -37,11 +37,18 @@ export default {
       chartOptions: {
         chart: {
           height: 350,
-          type: "area",
+          type: "bar",
+        },
+        plotOptions: {
+          bar: {
+            borderRadius: 10,
+            dataLabels: {
+              position: "top",
+            },
+          },
         },
         dataLabels: {
-          enabled: true,
-
+          enabled: false,
           formatter: function (val) {
             return val + "°C";
           },
@@ -51,52 +58,51 @@ export default {
             colors: ["#304758"],
           },
         },
-        stroke: {
-          curve: "smooth",
-        },
 
         xaxis: {
           type: "datetime",
           labels: {
-            format: "ddd HH:mm",
+            format: "ddd H:mm ",
           },
-
           categories: this.timeStamp,
-        },
-        annotations: {
-          position: "front",
-          xaxis: [
-            {
-              borderColor: "#111",
-              label: {
-                borderColor: "transparent",
-                style: {
-                  fontSize: "14px",
-                  color: "#666",
-                  background: "#e7e7e7",
-                  padding: {
-                    left: 15,
-                    right: 15,
-                    top: 10,
-                    bottom: 12,
-                  },
-                },
-                text: "now",
+          position: "bottom",
+          axisBorder: {
+            show: false,
+          },
+          axisTicks: {
+            show: false,
+          },
+          crosshairs: {
+            fill: {
+              type: "gradient",
+              gradient: {
+                colorFrom: "#D8E3F0",
+                colorTo: "#BED1E6",
+                stops: [0, 100],
+                opacityFrom: 0.4,
+                opacityTo: 0.5,
               },
             },
-          ],
-        },
-        tooltip: {
-          x: {
-            format: "dd  MMM y HH:mm ",
+          },
+          tooltip: {
+            enabled: true,
           },
         },
         yaxis: {
-          title: {
-            text: "levels",
+          axisBorder: {
+            show: false,
           },
-          min: 0,
+          axisTicks: {
+            show: false,
+          },
+          labels: {
+            show: true,
+            formatter: function (val) {
+              return val + "°C";
+            },
+          },
         },
+        
       },
     };
   },
